@@ -3,9 +3,10 @@ Konfiguracja i uruchomienie projektu:
 1. Wejdź stworzonego katalogu.
 
 2. W katalogu dodaj następujące pliki wraz odpowiednią zawartością:
+
 docker-compose.yml:
 
-'''
+```
 version: '3.8'
 
 services:
@@ -40,11 +41,11 @@ volumes:
 
 networks:
   fastqc_network:
-'''
+```
 
 Dockerfile:
 
-'''
+```
 FROM ubuntu:22.04
 
 RUN apt-get update && apt-get install -y \
@@ -65,11 +66,11 @@ CMD ["--help"]
 
 ENTRYPOINT ["fastqc"]
 CMD ["--help"]
-'''
+```
 
 nginx.conf:
 
-'''
+```
 server {
     listen 80;
     server_name localhost;
@@ -81,7 +82,7 @@ server {
         try_files $uri $uri/ =404;
     }
 }
-'''
+```
 
 3. Utwórz katalog input i umieść tam plik FASTQ SRR8786200_1.fastq.gz
 4. Zbuduj i uruchom projekt używając poniższego poelcenia:
